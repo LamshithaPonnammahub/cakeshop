@@ -1,0 +1,21 @@
+/* Footer.css */
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .footer p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .footer p:first-child {
+    font-weight: bold;
+    font-size: 1rem;
+  }
