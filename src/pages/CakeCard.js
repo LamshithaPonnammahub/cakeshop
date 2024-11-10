@@ -1,5 +1,5 @@
 import React from "react";
-import "./Style/CakeCard.css";
+import "./style/CakeCard.css";
 
 function CakeCard({ cake, onAddToCart }) {
   return (

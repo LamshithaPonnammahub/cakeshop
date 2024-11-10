@@ -1,7 +1,7 @@
 import React from "react";
 import cakes from "./cake";
 import CakeCard from "./CakeCard";
-import "./Style/HomePage.css";
+import "./HomePage.css";
 
 function HomePage({ onAddToCart }) {
   return (
