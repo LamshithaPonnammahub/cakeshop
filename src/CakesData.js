@@ -16,7 +16,7 @@ const CakesData = [
       category: 'Appetizers',
       ingredients: 'cheese, lemon cream, milk, eggs',
       price: '$5',
-      image: 'lemon.jpg', // Ensure images are in the public/images folder
+      image: 'lemon.jpeg', // Ensure images are in the public/images folder
     },
     {
       id: 2,
