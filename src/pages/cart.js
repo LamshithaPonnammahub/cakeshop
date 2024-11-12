@@ -1,18 +1,27 @@
-import React from "react";
-import "./style/CakeCard.css";
+import React from 'react';
+import { useCart } from '../CartContext.js';
 
-function CakeCard({ cake, onAddToCart }) {
+const Cart = () => {
+  const { cartItems, removeFromCart } = useCart();
+
+  if (cartItems.length === 0) {
+    return <div><h3>Your cart is empty.</h3></div>;
+  }
+
   return (
-    <div className="cake-card">
-      <img src={cake.image} alt={cake.name} className="cake-image" />
-      <h3 className="cake-name">{cake.name}</h3>
-      <p className="cake-description">{cake.description}</p>
-      <p className="cake-price">${cake.price}</p>
-      <button className="add-to-cart-btn" onClick={() => onAddToCart(cake)}>
-        Add to Cart
-      </button>
+    <div>
+      <h1>Your Cart</h1>
+      <ul>
+        {cartItems.map((item) => (
+          <li key={item.id}>
+            <h2>{item.name}</h2>
+            <p>Price: {item.price}</p>
+            <button onClick={() => removeFromCart(item.id)}>Remove from Cart</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
-export default CakeCard;
+export default Cart;

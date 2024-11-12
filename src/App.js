@@ -1,46 +1,34 @@
-import React, { useState } from "react";
-import HomePage from "./pages/HomePage";
-import Cart from "./pages/cart";
-import Footer from "./pages/Footer";
-import "./App.css";
-
-function App() {
-  const [cartItems, setCartItems] = useState([]);
-  const [isCartOpen, setCartOpen] = useState(false); 
-
-  const addToCart = (cake) => {
-    setCartItems((prev) => [...prev, cake]);
-  };
-
-  const removeFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const toggleCart = () => {
-    setCartOpen(!isCartOpen); // Toggle cart open state
-  };
-
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { CartProvider } from './CartContext';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Categories from './pages/Categories';
+import CakeDetails from './pages/CakeDetails';
+import Cart from './pages/Cart';
+import About from './pages/About';
+import Login from './pages/Login';
+const App = () => {
   return (
-    <div className="app">
-      <header>
-        <h1>Cake Heaven</h1>
-        <p>Delight in Every Slice</p>
-        <button className="cart-toggle-btn" onClick={toggleCart}>
-          Cart ({cartItems.length})
-        </button>
-      </header>
-      <main>
-        <HomePage onAddToCart={addToCart} cartItemCount={cartItems.length} />
-      </main>
-      <Cart 
-        cartItems={cartItems} 
-        onRemoveFromCart={removeFromCart} 
-        isOpen={isCartOpen} 
-        onClose={() => setCartOpen(false)} 
-      />
-      <Footer />
-    </div>
+    <CartProvider>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/cake/:id" element={<CakeDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </CartProvider>
   );
-}
+};
 
 export default App;
+
+
